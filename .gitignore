@@ -1,0 +1,76 @@
+# =========================
+# 🌳 Monorepo - Frontend + Backend
+# =========================
+
+# --- Node modules ---
+node_modules/
+**/node_modules/
+
+# --- Build outputs ---
+dist/
+build/
+.next/
+out/
+coverage/
+.nyc_output/
+.eslintcache
+*.tsbuildinfo
+
+# --- Logs ---
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# --- Environment files ---
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --- Cache / Temp ---
+.cache/
+.tmp/
+temp/
+.DS_Store
+*.swp
+*.swo
+
+# --- TypeScript ---
+# (already covered by dist/, but just in case)
+*.tsbuildinfo
+
+# --- Editor / IDE files ---
+.vscode/
+.idea/
+*.iml
+
+# --- OS files ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Package managers ---
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# --- Next.js specific ---
+.next/
+out/
+.vercel/
+*.local
+
+# --- Optional: Test reports ---
+junit.xml
+coverage-final.json
+reports/
+
+# --- Optional: Docker ---
+docker-compose.override.yml
+docker-compose*.env
+.docker/

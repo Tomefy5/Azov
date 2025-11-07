@@ -1,0 +1,394 @@
+{
+    "projectName": "AZOV",
+    "projectDescription": "Decentralized Identity Platform using Walrus + Sui blockchain. MVP in 48 hours.",
+    "projectType": "fullstack-web3",
+    "rootDir": "./",
+    "contextFiles": {
+        "paths": [
+            ".cline-context.md",
+            ".cline-rules.md",
+            ".cline-architecture.md"
+        ],
+        "priority": [
+            "high",
+            "high",
+            "high"
+        ]
+    },
+    "ignorePaths": [
+        "node_modules/",
+        ".next/",
+        "dist/",
+        "build/",
+        ".env.local",
+        ".env.*.local",
+        ".git/",
+        ".gitignore",
+        "coverage/",
+        "*.log",
+        ".DS_Store",
+        ".turbo/",
+        "pnpm-lock.yaml",
+        "yarn.lock",
+        "package-lock.json"
+    ],
+    "codeStyle": {
+        "language": "typescript",
+        "frameworks": [
+            "next.js",
+            "express",
+            "react"
+        ],
+        "linter": "eslint",
+        "formatter": "prettier",
+        "indentation": 2,
+        "maxLineLength": 100,
+        "quotes": "single",
+        "semicolons": true
+    },
+    "conventions": {
+        "fileNaming": {
+            "components": "PascalCase.tsx",
+            "services": "kebab-case.service.ts",
+            "controllers": "kebab-case.controller.ts",
+            "routes": "kebab-case.ts",
+            "hooks": "useKebabCase.ts",
+            "utilities": "kebab-case.ts",
+            "types": "kebab-case.ts",
+            "tests": "kebab-case.test.ts"
+        },
+        "functionNaming": {
+            "handlers": "handle*",
+            "getters": "get*",
+            "setters": "set*",
+            "checkers": "is*, has*, can*",
+            "fetchers": "fetch*",
+            "transformers": "to*, from*"
+        },
+        "folderStructure": {
+            "backend": {
+                "services": "business logic",
+                "controllers": "request handlers",
+                "routes": "API endpoints",
+                "middleware": "Express middleware",
+                "repositories": "data access",
+                "integrations": "external services",
+                "lib": "utilities",
+                "types": "TypeScript types",
+                "jobs": "background jobs",
+                "prisma": "database"
+            },
+            "frontend": {
+                "app": "Next.js pages",
+                "components": "React components",
+                "hooks": "custom hooks",
+                "services": "API clients",
+                "stores": "Zustand stores",
+                "types": "TypeScript types",
+                "lib": "utilities",
+                "styles": "CSS/Tailwind"
+            }
+        }
+    },
+    "guidelines": [
+        "Always use TypeScript with strict types (no 'any')",
+        "Always add error handling with try/catch blocks",
+        "Always validate inputs with Zod schemas",
+        "Always add JSDoc comments for public functions",
+        "Always use environment variables for secrets (never hardcode)",
+        "Focus on working code over perfect code",
+        "Production-ready code is mandatory",
+        "Add proper error messages, not just 'error'",
+        "Use logger instead of console.log",
+        "Follow patterns from .cline-architecture.md",
+        "Implement validation for all API inputs",
+        "Add security checks (no SQL injection, XSS, CSRF)",
+        "Consider performance implications",
+        "Handle edge cases explicitly",
+        "Write testable code with dependency injection"
+    ],
+    "codePatterns": {
+        "services": {
+            "description": "Business logic layer",
+            "template": ".cline-architecture.md",
+            "rules": [
+                "Inject dependencies in constructor",
+                "Use async/await",
+                "Throw meaningful errors",
+                "Add try/catch with error logging",
+                "Add JSDoc comments",
+                "Separate concerns"
+            ]
+        },
+        "controllers": {
+            "description": "HTTP request handlers",
+            "template": ".cline-architecture.md",
+            "rules": [
+                "Validate input with Zod",
+                "Call service layer",
+                "Handle errors with proper status codes",
+                "Return consistent JSON response",
+                "Never expose internal errors to client"
+            ]
+        },
+        "components": {
+            "description": "React UI components",
+            "template": ".cline-architecture.md",
+            "rules": [
+                "Use React hooks (no class components)",
+                "Add TypeScript interfaces for props",
+                "Use React Hook Form + Zod for forms",
+                "Add loading and error states",
+                "Use shadcn/ui components",
+                "Handle accessibility (a11y)"
+            ]
+        },
+        "hooks": {
+            "description": "Custom React hooks",
+            "template": ".cline-architecture.md",
+            "rules": [
+                "Start with 'use' prefix",
+                "Return typed object",
+                "Use useCallback for functions",
+                "Handle loading/error states",
+                "Add cleanup in useEffect"
+            ]
+        }
+    },
+    "security": {
+        "rules": [
+            "Never hardcode API keys, use process.env",
+            "Always validate user input with Zod",
+            "Hash passwords with bcryptjs",
+            "Verify JWT tokens on protected routes",
+            "Implement rate limiting on endpoints",
+            "Use HTTPS in production",
+            "Set CORS properly (not '*')",
+            "Encrypt sensitive data at rest",
+            "Never log passwords, tokens, or PII",
+            "Sanitize user input to prevent XSS",
+            "Use parameterized queries (Prisma)",
+            "Implement CSRF protection",
+            "Add Content Security Policy headers"
+        ]
+    },
+    "performance": {
+        "rules": [
+            "Optimize database queries (avoid N+1)",
+            "Add indexes on frequently queried columns",
+            "Cache frequently accessed data in Redis",
+            "Paginate large datasets",
+            "Use lazy loading for frontend components",
+            "Implement code splitting",
+            "Compress images and assets",
+            "Monitor bundle size",
+            "Use async/await for parallel operations",
+            "Clean up subscriptions and listeners"
+        ]
+    },
+    "testing": {
+        "framework": "jest",
+        "e2e": "cypress",
+        "coverage": 80,
+        "rules": [
+            "Write tests for critical functions",
+            "Test error cases and edge cases",
+            "Mock external dependencies",
+            "Test user interactions (e2e)",
+            "Aim for 80%+ coverage"
+        ]
+    },
+    "deployment": {
+        "frontend": {
+            "platform": "Vercel",
+            "command": "npm run build",
+            "env_file": ".env.production"
+        },
+        "backend": {
+            "platform": "Railway.app",
+            "command": "npm run build && npm start",
+            "env_file": ".env.production"
+        },
+        "database": {
+            "platform": "Supabase",
+            "type": "PostgreSQL"
+        }
+    },
+    "technologies": {
+        "frontend": {
+            "runtime": "Node.js + Browser",
+            "framework": "Next.js 14",
+            "language": "TypeScript",
+            "ui": "React 18",
+            "styling": "TailwindCSS",
+            "components": "shadcn/ui",
+            "state": "Zustand",
+            "forms": "React Hook Form + Zod",
+            "http": "Axios + SWR",
+            "blockchain": "@mysten/sui.js"
+        },
+        "backend": {
+            "runtime": "Node.js 20 LTS",
+            "framework": "Express.js",
+            "language": "TypeScript",
+            "database": "PostgreSQL (Supabase)",
+            "orm": "Prisma",
+            "cache": "Redis",
+            "queue": "Bull (Redis-based)",
+            "auth": "JWT + bcryptjs",
+            "validation": "Zod"
+        },
+        "blockchain": {
+            "l1": "Sui (testnet)",
+            "language": "Sui Move",
+            "storage": "Walrus (decentralized)"
+        },
+        "ai": {
+            "ocr": "Ollama (local, free)",
+            "deepfake": "Replicate API",
+            "models": [
+                "llava:7b",
+                "mistral:7b",
+                "neural-chat:7b"
+            ]
+        }
+    },
+    "apiEndpoints": {
+        "baseUrl": "http://localhost:3001/api",
+        "production": "https://api.azov.io/api",
+        "auth": [
+            "POST /auth/register",
+            "POST /auth/login",
+            "POST /auth/verify-phone"
+        ],
+        "identity": [
+            "POST /identity/upload",
+            "POST /identity/biometric",
+            "GET /identity/:userId"
+        ],
+        "employment": [
+            "POST /employment/add",
+            "GET /employment/:userId",
+            "POST /employment/:id/verify"
+        ],
+        "reputation": [
+            "GET /reputation/:userId",
+            "GET /reputation/:userId/breakdown"
+        ]
+    },
+    "commands": {
+        "frontend": {
+            "dev": "npm run dev",
+            "build": "npm run build",
+            "start": "npm start",
+            "lint": "npm run lint",
+            "test": "npm test"
+        },
+        "backend": {
+            "dev": "npm run dev",
+            "build": "npm run build",
+            "start": "npm start",
+            "lint": "npm run lint",
+            "test": "npm test",
+            "migrate": "npx prisma migrate dev",
+            "studio": "npx prisma studio"
+        },
+        "contracts": {
+            "build": "sui move build",
+            "test": "sui move test",
+            "publish": "sui client publish --gas-budget 10000"
+        }
+    },
+    "phases": [
+        {
+            "name": "Phase 1: Infrastructure",
+            "duration": "0-16 hours",
+            "tasks": [
+                "Project setup (Next.js + Express)",
+                "Database schema (Prisma)",
+                "Smart contracts (Sui Move)",
+                "Authentication (JWT)",
+                "Core API structure"
+            ]
+        },
+        {
+            "name": "Phase 2: Features",
+            "duration": "16-36 hours",
+            "tasks": [
+                "Pilier 1: Identity verification",
+                "Pilier 2: Employment history",
+                "Pilier 3: Background check",
+                "Dashboard & reputation scoring",
+                "API integrations"
+            ]
+        },
+        {
+            "name": "Phase 3: Polish",
+            "duration": "36-48 hours",
+            "tasks": [
+                "Testing & bug fixes",
+                "Deployment (Vercel + Railway)",
+                "Demo preparation",
+                "Documentation"
+            ]
+        }
+    ],
+    "documentation": {
+        "contextFiles": [
+            ".cline-context.md - Project overview",
+            ".cline-rules.md - Coding standards",
+            ".cline-architecture.md - Architecture patterns"
+        ],
+        "paths": [
+            "docs/API.md - API documentation",
+            "docs/ARCHITECTURE.md - System design",
+            "docs/SETUP.md - Local setup",
+            "docs/DEPLOYMENT.md - Deploy instructions",
+            "README.md - Project overview"
+        ]
+    },
+    "features": {
+        "mvp": [
+            "User registration & wallet connect",
+            "Identity verification (biometric + document)",
+            "Employment record management",
+            "Background check display",
+            "Reputation scoring & dashboard",
+            "Certificate storage (Walrus + Sui)"
+        ],
+        "ai": [
+            "OCR document extraction (Ollama)",
+            "Deepfake detection (Replicate)",
+            "Fraud detection (ML)",
+            "Anomaly scoring"
+        ],
+        "future": [
+            "Reputation DAOs",
+            "Credential marketplace",
+            "Reputation insurance",
+            "Multi-language support",
+            "Mobile app (native)",
+            "Advanced analytics"
+        ]
+    },
+    "scalability": {
+        "database": "PostgreSQL with read replicas",
+        "cache": "Redis cluster",
+        "api": "Microservices (Node.js)",
+        "frontend": "Vercel global CDN",
+        "storage": "Walrus (decentralized)",
+        "blockchain": "Sui network (public)"
+    },
+    "monitoring": {
+        "errors": "Sentry",
+        "logs": "ELK Stack",
+        "metrics": "Prometheus + Grafana",
+        "uptime": "UptimeRobot",
+        "performance": "NewRelic"
+    },
+    "status": {
+        "createdAt": "2025-11-07",
+        "version": "1.0",
+        "ready": true
+    }
+}
